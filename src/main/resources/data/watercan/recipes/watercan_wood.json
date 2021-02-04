@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "watercan:watercan_wood"
+  },
+  "pattern": [
+    "wm ",
+    "wbw",
+    " w "
+  ],
+  "type": "crafting_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:bone_meal"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    }
+  }
+}

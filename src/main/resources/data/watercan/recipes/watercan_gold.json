@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "watercan:watercan_gold"
+  },
+  "pattern": [
+    "gm ",
+    "gbg",
+    " g "
+  ],
+  "type": "crafting_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:bone_meal"
+    },
+    "g": {
+      "tag": "forge:ingots/gold"
+    },
+    "b": {
+      "item": "minecraft:bucket"
+    }
+  }
+}
