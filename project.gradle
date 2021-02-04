@@ -1,0 +1,48 @@
+ext {
+
+    mod = [
+            id: 'watercan'
+    ]
+
+    forge = [
+            version      : '1.16.4-35.1.0',
+            version_range: '[35,)'
+    ]
+
+    minecraft = [
+            version_range: '[1.16.4,1.17)'
+    ]
+
+    athenaeum = [
+            version_range: '[2.0.0,)'
+    ]
+
+    mappings = [
+            channel: 'snapshot',
+            version: '20201028-1.16.3'
+    ]
+
+    // 'required-after:dropt;': 'required-after:dropt@[1.12.2-1.12.0,);',
+    // 'required-after:athenaeum;': 'required-after:athenaeum@[1.12.2-1.19.0-RC.1,);'
+    replace = []
+}
+
+sourceSets {
+    api
+    main
+    test
+}
+
+repositories {
+
+    // Athenaeum
+    maven { url "file://${project.projectDir}/../athenaeum-1.16/maven" }
+
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.ext.forge.version}"
+    compile fg.deobf("com.codetaylor.mc.athenaeum:athenaeum-1.16:[0.0.0,)")
+    implementation sourceSets.api.output
+}
