@@ -1,6 +1,7 @@
 package com.codetaylor.mc.watercan.common.event;
 
 import com.codetaylor.mc.watercan.common.item.*;
+import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,10 +14,16 @@ public class ItemRegistrationEventHandler {
 
     IForgeRegistry<Item> registry = event.getRegistry();
 
-    registry.register(new WatercanWoodItem());
-    registry.register(new WatercanStoneItem());
-    registry.register(new WatercanIronItem());
-    registry.register(new WatercanGoldItem());
-    registry.register(new WatercanDiamondItem());
+    this.register(registry, new WatercanWoodItem());
+    this.register(registry, new WatercanStoneItem());
+    this.register(registry, new WatercanIronItem());
+    this.register(registry, new WatercanGoldItem());
+    this.register(registry, new WatercanDiamondItem());
+  }
+
+  private void register(IForgeRegistry<Item> registry, WatercanBaseItem item) {
+
+    registry.register(item);
+    DispenserBlock.registerDispenseBehavior(() -> item, WatercanBaseItem.DispenserBehavior.INSTANCE);
   }
 }

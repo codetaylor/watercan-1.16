@@ -366,6 +366,8 @@ public abstract class WatercanBaseItem
   public static class DispenserBehavior
       implements IDispenseItemBehavior {
 
+    public static final DispenserBehavior INSTANCE = new DispenserBehavior();
+
     @Nonnull
     @Override
     public ItemStack dispense(@Nonnull IBlockSource source, @Nonnull ItemStack stack) {

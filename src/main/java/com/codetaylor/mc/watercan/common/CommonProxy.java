@@ -7,6 +7,7 @@ import com.codetaylor.mc.watercan.IProxy;
 import com.codetaylor.mc.watercan.WatercanMod;
 import com.codetaylor.mc.watercan.WatercanModCommonConfig;
 import com.codetaylor.mc.watercan.common.event.ItemRegistrationEventHandler;
+import com.codetaylor.mc.watercan.common.network.SCPacketDispenseWatercan;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
@@ -42,18 +43,18 @@ public class CommonProxy
     WatercanModCommonConfig.bake();
 
     this.packetService = NetworkAPI.createPacketService(WatercanMod.MOD_ID, WatercanMod.MOD_ID, WatercanMod.PACKET_SERVICE_PROTOCOL_VERSION);
+    this.packetService.registerMessage(SCPacketDispenseWatercan.class, SCPacketDispenseWatercan.class);
   }
 
   @Override
   public void registerModEventHandlers(IEventBus eventBus) {
 
     eventBus.register(new ItemRegistrationEventHandler());
-
   }
 
   @Override
   public void registerForgeEventHandlers(IEventBus eventBus) {
-
+    //
   }
 
   @Override
