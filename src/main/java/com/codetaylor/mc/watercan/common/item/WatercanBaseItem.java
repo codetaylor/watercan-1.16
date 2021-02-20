@@ -19,6 +19,8 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
@@ -85,7 +87,7 @@ public abstract class WatercanBaseItem
         "tooltip.watercan.capacity",
         stack.getMaxDamage() - stack.getDamage(),
         stack.getMaxDamage()
-    ));
+    ).setStyle(Style.EMPTY.setFormatting(TextFormatting.GRAY)));
   }
 
   @Override
