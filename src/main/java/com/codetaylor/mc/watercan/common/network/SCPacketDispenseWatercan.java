@@ -49,26 +49,34 @@ public class SCPacketDispenseWatercan
   @Override
   public SCPacketDispenseWatercan onMessage(SCPacketDispenseWatercan message, Supplier<NetworkEvent.Context> contextSupplier) {
 
-    NetworkEvent.Context context = contextSupplier.get();
-    context.enqueueWork(() -> {
+    return Handler.onMessage(message, contextSupplier);
+  }
 
-      ItemStack itemStack = message.itemStack;
-      Item item = itemStack.getItem();
+  public static class Handler {
 
-      if (item instanceof WatercanBaseItem) {
-        double x = message.blockPos.getX() + 0.5;
-        double y = message.blockPos.getY() + 0.5;
-        double z = message.blockPos.getZ() + 0.5;
-        World world = Minecraft.getInstance().world;
-        WatercanBaseItem watercan = (WatercanBaseItem) item;
+    public static SCPacketDispenseWatercan onMessage(SCPacketDispenseWatercan message, Supplier<NetworkEvent.Context> contextSupplier) {
 
-        if (watercan.getMaxDamage(itemStack) == 0
-            || watercan.getMaxDamage(itemStack) - itemStack.getDamage() >= WatercanBaseItem.MILLI_BUCKETS_PER_USE) {
-          watercan.spawnParticles(world, x, y, z);
+      NetworkEvent.Context context = contextSupplier.get();
+      context.enqueueWork(() -> {
+
+        ItemStack itemStack = message.itemStack;
+        Item item = itemStack.getItem();
+
+        if (item instanceof WatercanBaseItem) {
+          double x = message.blockPos.getX() + 0.5;
+          double y = message.blockPos.getY() + 0.5;
+          double z = message.blockPos.getZ() + 0.5;
+          World world = Minecraft.getInstance().world;
+          WatercanBaseItem watercan = (WatercanBaseItem) item;
+
+          if (watercan.getMaxDamage(itemStack) == 0
+              || watercan.getMaxDamage(itemStack) - itemStack.getDamage() >= WatercanBaseItem.MILLI_BUCKETS_PER_USE) {
+            watercan.spawnParticles(world, x, y, z);
+          }
         }
-      }
-    });
-    context.setPacketHandled(true);
-    return null;
+      });
+      context.setPacketHandled(true);
+      return null;
+    }
   }
 }
