@@ -1,0 +1,8 @@
+{
+  "item.watercan.watercan_wood": "Деревянная лейка",
+  "item.watercan.watercan_stone": "Каменная лейка",
+  "item.watercan.watercan_iron": "Железная лейка",
+  "item.watercan.watercan_diamond": "Алмазная лейка",
+  "item.watercan.watercan_gold": "Золотая лейка",
+  "tooltip.watercan.capacity": "%s/%s mB"
+}
