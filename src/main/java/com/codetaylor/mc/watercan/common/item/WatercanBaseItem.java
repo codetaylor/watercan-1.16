@@ -200,7 +200,7 @@ public abstract class WatercanBaseItem
           );
 
           if (this.consumeWaterSource()) {
-            world.removeBlock(blockPos, false);
+            world.setBlockState(blockPos, Blocks.AIR.getDefaultState(), 1 | 2 | 8);
           }
         }
         return new ActionResult<>(ActionResultType.SUCCESS, itemStack);
